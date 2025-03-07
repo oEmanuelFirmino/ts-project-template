@@ -1,6 +1,8 @@
-import { Router } from "express";
-import { healthCheck } from "../controllers/healthCheck.controller";
+import express from "express";
+import { healthRoutes } from "./health.routes";
+import { metricsRoutes } from "./metrics.routes";
 
-export const router = Router();
-
-router.get("/health", healthCheck);
+export function configureRoutes(app: express.Application) {
+  metricsRoutes(app);
+  healthRoutes(app);
+}
